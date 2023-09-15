@@ -12,12 +12,12 @@ west = -74.102378
 
 #COLORS
     #set 0 for color and 1 for BW
-colorindex = 0
-backgroundcolor = ['#7AC676', '#EEEEEE']
-roadcolor = ['#644117', '#B4B4B4']
+colorindex = 1
+backgroundcolor = ['#7AC676', '#b7b7b7']
+roadcolor = ['#644117', '#7f7f7f']
 grasscolor = ['#BBEAB8', '#EAEAEA']
 buildingcolor = ['#696969', '#939393']
-watercolor = ['#aad3df', '#F1F1F1']
+watercolor = ['#aad3df', '#dddbdb']
 
 #TAG LIST
 buildingtags = {'building': True}
@@ -39,12 +39,6 @@ buildings = buildings.plot(ax=roadsplot, marker='o', color=buildingcolor[colorin
 
 finalplot = buildings
 
-#CUSTOMIZATION
-finalplot.set_facecolor((backgroundcolor[colorindex]))
-plt.grid(which='both', linestyle='-', lw=0.5, color='gray')
-plt.xlim(west, east)
-plt.ylim(south, north)
-
 #TICK CALCULATIONS
     #How many gridlines
 gridlines = 20
@@ -53,6 +47,10 @@ gridlines = 20
 ytickdiv = (north-south)/gridlines
 xtickdiv = (east-west)/gridlines
 
+half_y_tickdiv = ytickdiv/2
+half_x_tickdiv = xtickdiv/2
+
+#Sets the MAJOR ticks (for grid)
 yticklist = []
 xticklist = []
 
@@ -60,14 +58,38 @@ for number in list(range(gridlines)):
     yticklist.append(south+ytickdiv*number)
     xticklist.append(west+xtickdiv*number)
 
-#LETTER GRIDLINES
+#Sets the MINOR ticks (for labels)
+yticklist_minor = []
+xticklist_minor = []
+
+for number in list(range(gridlines)):
+    yticklist_minor.append(south+half_y_tickdiv+ytickdiv*number)
+    xticklist_minor.append(west+half_x_tickdiv+xtickdiv*number)
+
+#LETTER GRIDLINES - Generates list of capital letters to use for letter labeling
 lastletter = 97 + gridlines
 xticklabels = list(map(chr, range(97, lastletter)))
 xticklabels = list(map(str.upper, xticklabels))
 
-#GENERATING THE GRIDLINES
+#NUMBERED GRIDLINES - Generates list of numbers for use with number labels
 yticklabels = list(range(gridlines))
-plt.yticks(yticklist, yticklabels)
-plt.xticks(xticklist, xticklabels)
+
+
+#Creates the MINOR ticks for labeling
+plt.yticks(yticklist_minor, yticklabels, minor=True)
+plt.xticks(xticklist_minor, xticklabels, minor=True)
+
+#Creates the MAJOR ticks for the grid
+#Sets a blank list because otherwise labels are auto-written, even if labels=None
+blank = []
+plt.yticks(yticklist, blank)
+plt.xticks(xticklist, blank)
+
+
+#CUSTOMIZATION
+finalplot.set_facecolor((backgroundcolor[colorindex]))
+plt.grid(which='major', linestyle='-', lw=0.5, color='grey')
+plt.xlim(west, east)
+plt.ylim(south, north)
 
 plt.show()
