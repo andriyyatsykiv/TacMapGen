@@ -1,37 +1,52 @@
 import matplotlib.pyplot as plt
 import osmnx as osm
-import numpy as np
-import geopandas
-import pandas
+
+print("Welcome to TacMapGen Beta 0.9.1\n"
+      "Developed By Andriy Yatsykiv - All Rights Reserved\n"
+      "Full Release will be available under TBA Open-Source License\n"
+      "OSM Data - © OpenStreetMap contributors - Database under Open Database Licence")
+
+
 
 # USER SETTINGS
+
+custom_param = str(input("Do you wish to use custom parameters? (y/n)\n"))
+
+    #Asks user what the eastern bound is
+if custom_param == 'y':
+    print("You will now define your map borders. Enter the requested latitude or longitude in decimal format (XX.XXXXXX)")
+    north = float(input("Enter the LATITUDE of the northeast corner of the map. \n"))
+    east = float(input("Enter the LONGITUDE of the northeast corner of the map. \n"))
+    south = float(input("Enter the LATITUDE of the southwest corner of the map. \n"))
+    west = float(input("Enter the LONGITUDE of the southwest corner of the map. \n"))
+
     #Asks user for color or black and white
-#colorindex = int(input("Color or Black and White? Input 0 (Zero) for color or 1 for black and white:\n"))
+    colorindex = int(input("Color or Black and White? Input 0 (Zero) for color or\n"
+                           "1 for printer-friendly black and white:\n"))
 
-    #Asks user for number of grid marks
-#gridlines = int(input("How many grids do you want to the map to be divided into?\n"))
+    #Asks user for gridline count
+    gridlines = int(input("How many grids do you want to the map to be divided into? Default is 20.\n"))
 
-    #Asks user for POI labels or not.
-#labeled = str(input("Do you want to label points of interest? (y/n)\nNOTE: Points of interest must
-# be "nodes" (aka points) in OpenStreetMaps with a name attached to them."))
+    #Asks user if they wish to label POIs
+    labeled = str(input('Do you want to automatically label points of interest?\n'
+                        '(Only maps OSM nodes that have a name) (y/n)\n'))
 
-    #Asks user for export file format
-    #Do you want to set a custom format (Default is .png) y/n
-#exportformat = str(input('What format do you want your map to export as?\n Input "png" for png, 'jpg', 'svg'/n))
+    #Asks user for export format
+    exportformat = str(input('What format do you want your map to export as? (Default is png)\n Input "png" for png, likewise for jpg and svg.\n'))
 
-#quality = int(input('What quality, in DPI, do you want the exported image to have?/nA quality of 300dpi results in a 1,200x1,200 Image./n'
+    #Asks user for quality
+    quality = int(input('What quality, in DPI, do you want the exported image to have?\nDefault quality of 300dpi results in a 1,200x1,200 Image.\n'))
 
-colorindex=0
-gridlines=20
-labeled = 'y'
-exportformat = 'png'
-quality = 300
-
-# IMPORT BOUNDING BOX
-north = 41.466901
-south = 41.462273
-east = -74.09598
-west = -74.102378
+else:
+    north = 41.466901
+    south = 41.462273
+    east = -74.09598
+    west = -74.102378
+    colorindex=0
+    gridlines=20
+    labeled = 'y'
+    exportformat = 'png'
+    quality = 300
 
 # COLOR LIBRARY
     # set 0 for color and 1 for BW
