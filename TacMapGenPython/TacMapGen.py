@@ -13,13 +13,9 @@ import pandas
 #labeled = str(input("Do you want to label points of interest? (y/n)\nNOTE: Points of interest must
 # be "nodes" (aka points) in OpenStreetMaps with a name attached to them."))
 
-colorindex=0
+colorindex=1
 gridlines=20
 labeled = 'y'
-
-# SET POINTS OF INTEREST
-#Retrieve named points
-#Plot named points as dots, with labels according
 
 # IMPORT BOUNDING BOX
 north = 41.466901
@@ -29,9 +25,9 @@ west = -74.102378
 
 # COLOR LIBRARY
     # set 0 for color and 1 for BW
-forestcolor = ['#7AC676', '#EAEAEA']
+forestcolor = ['#7AC676', '#FFFFFF']
 roadcolor = ['#644117', '#7f7f7f']
-grasscolor = ['#BBEAB8', '#FFFFFF']
+grasscolor = ['#BBEAB8', '#EAEAEA']
 buildingcolor = ['#696969', '#939393']
 watercolor = ['#aad3df', '#dddbdb']
 
@@ -56,18 +52,8 @@ names = osm.features_from_bbox(north, south, east, west, nametags)
 names = names.loc['node', ['name','geometry']]
 
 # CREATE PLOTS IN LAYERS
-    # plots hatched forest for black and white
-if colorindex == 1:
-    forestplot = forest.plot(color=forestcolor[colorindex], edgecolor="black")
-else:
-    forestplot = forest.plot(color=forestcolor[colorindex])
-
-    # plots border around grass if black and white
-if colorindex == 1:
-    grassplot = grass.plot(ax=forestplot, color=grasscolor[colorindex], edgecolor="black")
-else:
-    grassplot = grass.plot(ax=forestplot, color=grasscolor[colorindex])
-
+forestplot = forest.plot(color=forestcolor[colorindex])
+grassplot = grass.plot(ax=forestplot, color=grasscolor[colorindex])
 waterplot = water.plot(ax=grassplot, color=watercolor[colorindex])
 roadsplot = roads.plot(ax=waterplot, color=roadcolor[colorindex])
 buildingplot = buildings.plot(ax=roadsplot, marker='o', color=buildingcolor[colorindex], markersize=5)
