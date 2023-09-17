@@ -2,36 +2,67 @@ import PySimpleGUI as sg
 import matplotlib.pyplot as plt
 import osmnx as osm
 
-#DEFAULT VALUES TO APPEAR IN TEXTBOXES
+# Solves Blurry Font Issue
+from ctypes import windll
+windll.shcore.SetProcessDpiAwareness(1)
+
+# DEFAULT VALUES TO APPEAR IN INPUT AREAS
 north = 41.466901
 south = 41.462273
 east = -74.09598
 west = -74.102378
-colorindex = 0
+colorindex = 'COLOR'
 gridlines = 20
-labeled = 'y'
+labeled = 'YES'
 exportformat = 'png'
 quality = 300
 
+# Declaring a theme
 sg.theme('DarkGrey13')
 
-# All the stuff inside your window.
-coordinates_column = [  [sg.Text('Coordinates')],
-    [sg.Text('Enter the LATITUDE of the northeast corner of the mapped area.'), sg.InputText(north, key='north')],
-    [sg.Text('Enter the LONGITUDE of the northeast corner of the mapped area.'), sg.InputText(east, key='east')],
-    [sg.Text('Enter the LATITUDE of the southwest corner of the mapped area.'), sg.InputText(south, key='south')],
-    [sg.Text('Enter the LONGITUDE of the southwest corner of the mapped area.'), sg.InputText(west, key='west')],
+# Window Setup
+coordinates_column = [
+
+    [sg.Text('TacMapGen 0.9.1 Instructions\n'
+             '1) Enter your coordinates below in decimal form (XX.XXXXX)\n'
+             '2) Set the appearance settings on the right hand side as required\n'
+             '3) Set where you want the map file to go by clicking "Map Destination"\n'
+             '4) Generate the map and send it to the destination by clicking "Generate"')],
+
+    [sg.Text('COORDINATES')],
+
+    [sg.Text('Enter the LATITUDE of the northeast corner of the mapped area.'),
+        sg.InputText(north, s=(15, 22), key='north')],
+
+    [sg.Text('Enter the LONGITUDE of the northeast corner of the mapped area.'),
+        sg.InputText(east, s=(15, 22), key='east')],
+
+    [sg.Text('Enter the LATITUDE of the southwest corner of the mapped area.'),
+        sg.InputText(south, s=(15, 22), key='south')],
+
+    [sg.Text('Enter the LONGITUDE of the southwest corner of the mapped area.'),
+        sg.InputText(west, s=(15, 22), key='west')],
              ]
 
 appearance_column = [
-    [sg.Text('Appearance')],
-    [sg.Text('Do you want a colored or printer-friendly black and white map? (0 for COLOR, 1 for BW)'), sg.InputText(colorindex, key='colorindex')],
-    [sg.Text('How many grids do you want to the map to be divided into?'), sg.InputText(gridlines, key='gridlines')],
-    [sg.Text('Do you want to include and label points of interest?'), sg.InputText(labeled, key='labeled')],
-    [sg.Text('What format do you want your map to export as? (Default is png)\n Input "png" for png, likewise for jpg and svg.\n'), sg.InputText(exportformat, key='exportformat')],
-    [sg.Text('What quality, in DPI, do you want the exported image to have?\nDefault quality of 300dpi results in a 1,200x1,200 Image.\n'), sg.InputText(quality, key='quality')],
-    [sg.Button('Read'), sg.Exit()]
-]
+    [sg.Text('APPEARANCE')],
+
+    [sg.Text('Do you want a colored or printer-friendly black and white map?\n(0 for COLOR, 1 for BW)'),
+     sg.Combo(['COLOR', 'BLACK/WHITE'], default_value=colorindex, s=(15, 22), readonly=True, key='colorindex')],
+
+    [sg.Text('How many grids do you want to the map to be divided into?'),
+     sg.InputText(gridlines, s=(15, 22), key='gridlines')],
+
+    [sg.Text('Do you want labels on points of interest?'),
+     sg.Combo(['YES', 'NO'], default_value=labeled, s=(15, 22), readonly=True, key='labeled')],
+
+    [sg.Text('What quality, in DPI, do you want the exported image to have?\n'
+             'Default quality of 300dpi results in a 1,200x1,200 Image.\n'),
+     sg.InputText(quality, s=(15, 22), key='quality')],
+
+    [sg.FileSaveAs("Map Destination", key='save', enable_events=True,
+                      file_types=(('PNG', '.png'), ('JPG', '.jpg'), ('SVG', '.svg'))),
+     sg.Button('Generate')]]
 
 layout = [
     [
@@ -42,17 +73,22 @@ layout = [
 ]
 
 # CREATES THE WINDOW
-window = sg.Window('TacMapGen', layout)
+window = sg.Window('TacMapGen 0.9.1 © Andriy Yatsykiv', layout)
 
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
     event, values = window.read()
-
     north = float(values['north'])
     south = float(values['south'])
     east = float(values['east'])
     west = float(values['west'])
-    colorindex = int(values['colorindex'])
+
+    colorindex = str(values['colorindex'])
+    if colorindex == 'COLOR':
+        colorindex = 0
+    if colorindex == 'BLACK/WHITE':
+        colorindex = 1
+
     gridlines = int(values['gridlines'])
     labeled = values['labeled']
     exportformat = str(values['exportformat'])
@@ -96,7 +132,7 @@ while True:
     finalplot = buildingplot
 
     # RENDER LABELS FOR POIS
-    if labeled == 'y':
+    if labeled == 'YES':
         for x, y, label in zip(names.geometry.x, names.geometry.y, names.name):
             # finalplot.annotate(label, xy=(x, y), xytext=(3, 3), textcoords="offset points")
             # The above is less customizable so I chose to use the below instead.
@@ -153,8 +189,8 @@ while True:
     plt.ylim(south, north)
 
     # PLOT EXPORT/SAVE
-    plt.savefig(f'TacMapGen Map.{exportformat}', bbox_inches='tight', dpi=quality)
+    plt.savefig(values["save"], bbox_inches='tight', dpi=quality)
     plt.show()
 
-    if event == sg.WIN_CLOSED or event == 'Close': # if user closes window or clicks cancel
+    if event == sg.WIN_CLOSED or event == 'Close':  # if user closes window or clicks cancel
         break
