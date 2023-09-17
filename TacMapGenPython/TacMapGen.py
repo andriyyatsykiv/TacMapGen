@@ -17,12 +17,15 @@ import pandas
 
     #Asks user for export file format
     #Do you want to set a custom format (Default is .png) y/n
-#exportformat = str(input('What format do you want your map to export as?\n Input "png" for png, 'jpg', 'svg'))
+#exportformat = str(input('What format do you want your map to export as?\n Input "png" for png, 'jpg', 'svg'/n))
+
+#quality = int(input('What quality, in DPI, do you want the exported image to have?/nA quality of 300dpi results in a 1,200x1,200 Image./n'
 
 colorindex=0
 gridlines=20
 labeled = 'y'
 exportformat = 'png'
+quality = 300
 
 # IMPORT BOUNDING BOX
 north = 41.466901
@@ -128,5 +131,5 @@ plt.xlim(west, east)
 plt.ylim(south, north)
 
 #PLOT EXPORT/SAVE
-plt.savefig(f'TacMapGen Map.{exportformat}', bbox_inches='tight', dpi=300)
+plt.savefig(f'TacMapGen Map.{exportformat}', bbox_inches='tight', dpi=quality)
 plt.show()
