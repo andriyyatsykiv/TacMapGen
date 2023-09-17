@@ -5,6 +5,9 @@ Install
 --------
 Download the latest distribution, and run TacMapGen.exe from the main file.
 
+![image](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/e757d939-94be-4094-b675-a50b16329c2c)
+
+
 FAQ
 ---------
 **"Nothing appears on my map, or some things are missing"**
