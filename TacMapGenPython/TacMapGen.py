@@ -44,6 +44,12 @@ roads = osm.features_from_bbox(north, south, east, west, roadtags)
 buildings = osm.features_from_bbox(north, south, east, west, buildingtags)
 names = osm.features_from_bbox(north, south, east, west, nametags)
 
+#CLEANS GEODATA
+    #Preparing annotation dataframe from names
+names = names.loc['node', ['name','geometry']]
+
+    #Once done - names[coordinate location].astype('int')
+
 # CREATE PLOTS IN LAYERS
     # plots hatched forest for black and white
 if colorindex == 1:
@@ -113,5 +119,7 @@ plt.xticks(xticklist, blank)
 plt.grid(which='major', linestyle='-', lw=0.5, color='grey')
 plt.xlim(west, east)
 plt.ylim(south, north)
+
+
 
 plt.show()
