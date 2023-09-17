@@ -1,5 +1,5 @@
 # TacMapGen
-OpenStreetMaps-driven Tactical Map Generation - ft. OSMnx and GeoPandas
+Easy Tactical Map Generation for outdoor competitive sports, with a specific focus on Airsoft and Paintball.
 
 Install
 --------
