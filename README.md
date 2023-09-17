@@ -12,7 +12,9 @@ FAQ
 ---------
 **"Nothing appears on my map, or some things are missing"**
 
-TacMapGen processes the map data included in OpenStreetMaps (OSM) - which is like wikipedia, but for maps. If something doesn't appear, then it likely hasn't been mapped. I strongly encourage you to add the stuff you want mapped into OpenStreetMaps - It's incredibly easy (just dragging and dropping shapes onto sattelite imagery) and it helps the community tremendously. You can get started here - https://www.openstreetmap.org/
+TacMapGen processes the map data included in OpenStreetMaps (OSM) - which is like wikipedia, but for maps. If something doesn't appear, then it likely hasn't been mapped. I strongly encourage you to add the stuff you want mapped into OpenStreetMaps - It's incredibly easy (just dragging and dropping shapes onto sattelite imagery) and it helps the community tremendously. 
+
+You can get started here - https://www.openstreetmap.org/
 
 **"What things appear on the map?"**
 
