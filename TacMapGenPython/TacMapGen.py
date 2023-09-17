@@ -60,7 +60,7 @@ appearance_column = [
              'Default quality of 300dpi results in a 1,200x1,200 Image.\n'),
      sg.InputText(quality, s=(15, 22), key='quality')],
 
-    [sg.FileSaveAs("Map Destination", key='save', enable_events=True,
+    [sg.FileSaveAs("Map Destination", key='exportformat', enable_events=True,
                       file_types=(('PNG', '.png'), ('JPG', '.jpg'), ('SVG', '.svg'))),
      sg.Button('Generate')]]
 
@@ -189,7 +189,7 @@ while True:
     plt.ylim(south, north)
 
     # PLOT EXPORT/SAVE
-    plt.savefig(values["save"], bbox_inches='tight', dpi=quality)
+    plt.savefig(values["exportformat"], bbox_inches='tight', dpi=quality)
     plt.show()
 
     if event == sg.WIN_CLOSED or event == 'Close':  # if user closes window or clicks cancel
