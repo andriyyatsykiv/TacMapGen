@@ -12,7 +12,7 @@ print("Welcome to TacMapGen Beta 0.9.1\n"
 
 custom_param = str(input("Do you wish to use custom parameters? (y/n)\n"))
 
-    #Asks user what the eastern bound is
+    #Asks user about custom params
 if custom_param == 'y':
     print("You will now define your map borders. Enter the requested latitude or longitude in decimal format (XX.XXXXXX)")
     north = float(input("Enter the LATITUDE of the northeast corner of the map. \n"))
