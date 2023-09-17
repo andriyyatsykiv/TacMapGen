@@ -1,2 +1,9 @@
-.TacMapGenPython\dist
-.TacMapGenPython\build
+**TacMapGenPython/dist
+**TacMapGenPython/build
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+
+
