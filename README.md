@@ -1,4 +1,4 @@
-![268531265-61459889-a454-4aef-bb18-4f7a44b03b6a](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/c7301375-e968-4275-b523-7d7f7b320dab)![TMJT](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/373a08e2-85b4-465b-aed5-179c73af46bf)# TacMapGen
+# TacMapGen
 Easy Tactical Map Generation for outdoor competitive sports, with a specific focus on Airsoft and Paintball.
 
 Install
