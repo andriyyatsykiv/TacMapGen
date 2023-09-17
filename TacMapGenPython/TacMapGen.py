@@ -6,9 +6,16 @@ import pandas
 
 # USER SETTINGS
     #Asks user for color or black and white
-colorindex = int(input("Color or Black and White? Input 0 (Zero) for color or 1 for black and white:\n"))
+#colorindex = int(input("Color or Black and White? Input 0 (Zero) for color or 1 for black and white:\n"))
     #Asks user for number of grid marks
-gridlines = int(input("How many grids do you want to the map to be divided into?\n"))
+#gridlines = int(input("How many grids do you want to the map to be divided into?\n"))
+    #Asks user for POI labels or not.
+#labeled = str(input("Do you want to label points of interest? (y/n)\nNOTE: Points of interest must
+# be "nodes" (aka points) in OpenStreetMaps with a name attached to them."))
+
+colorindex=0
+gridlines=20
+labeled = 'y'
 
 # SET POINTS OF INTEREST
 #Retrieve named points
@@ -24,7 +31,7 @@ west = -74.102378
     # set 0 for color and 1 for BW
 forestcolor = ['#7AC676', '#EAEAEA']
 roadcolor = ['#644117', '#7f7f7f']
-grasscolor = ['#BBEAB8', '#EAEAEA']
+grasscolor = ['#BBEAB8', '#FFFFFF']
 buildingcolor = ['#696969', '#939393']
 watercolor = ['#aad3df', '#dddbdb']
 
@@ -48,8 +55,6 @@ names = osm.features_from_bbox(north, south, east, west, nametags)
     #Preparing annotation dataframe from names
 names = names.loc['node', ['name','geometry']]
 
-    #Once done - names[coordinate location].astype('int')
-
 # CREATE PLOTS IN LAYERS
     # plots hatched forest for black and white
 if colorindex == 1:
@@ -68,6 +73,15 @@ roadsplot = roads.plot(ax=waterplot, color=roadcolor[colorindex])
 buildingplot = buildings.plot(ax=roadsplot, marker='o', color=buildingcolor[colorindex], markersize=5)
 
 finalplot = buildingplot
+
+#RENDER LABELS FOR POIS
+if labeled == 'y':
+    for x, y, label in zip(names.geometry.x, names.geometry.y, names.name):
+        #finalplot.annotate(label, xy=(x, y), xytext=(3, 3), textcoords="offset points")
+        #The above is less customizable so I chose to use the below instead.
+        finalplot.text(x, y, label.upper(), fontsize='x-small')
+
+
 
 # TICK CALCULATIONS
 
