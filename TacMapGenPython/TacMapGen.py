@@ -7,15 +7,22 @@ import pandas
 # USER SETTINGS
     #Asks user for color or black and white
 #colorindex = int(input("Color or Black and White? Input 0 (Zero) for color or 1 for black and white:\n"))
+
     #Asks user for number of grid marks
 #gridlines = int(input("How many grids do you want to the map to be divided into?\n"))
+
     #Asks user for POI labels or not.
 #labeled = str(input("Do you want to label points of interest? (y/n)\nNOTE: Points of interest must
 # be "nodes" (aka points) in OpenStreetMaps with a name attached to them."))
 
-colorindex=1
+    #Asks user for export file format
+    #Do you want to set a custom format (Default is .png) y/n
+#exportformat = str(input('What format do you want your map to export as?\n Input "png" for png, 'jpg', 'svg'))
+
+colorindex=0
 gridlines=20
 labeled = 'y'
+exportformat = 'png'
 
 # IMPORT BOUNDING BOX
 north = 41.466901
@@ -120,6 +127,6 @@ plt.grid(which='major', linestyle='-', lw=0.5, color='grey')
 plt.xlim(west, east)
 plt.ylim(south, north)
 
-
-
+#PLOT EXPORT/SAVE
+plt.savefig(f'TacMapGen Map.{exportformat}', bbox_inches='tight', dpi=300)
 plt.show()
