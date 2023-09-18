@@ -1,4 +1,4 @@
-![GitHub](https://img.shields.io/github/license/andriyyatsykiv/TacMapGen)
+![GitHub License](https://img.shields.io/github/license/andriyyatsykiv/TacMapGen)
 ![GitHub top language](https://img.shields.io/github/languages/top/andriyyatsykiv/TacMapGen?style=plastic)
 [![LoC](https://tokei.rs/b1/github/andriyyatsykiv/TacMapGen)](https://github.com/andriyyatsykiv/TacMapGen).
 ![GitHub last commit](https://img.shields.io/github/last-commit/andriyyatsykiv/TacMapGen?color=red&style=plastic)
