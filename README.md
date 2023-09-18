@@ -11,13 +11,13 @@ Install
 --------
 Download the latest distribution, and run TacMapGen.exe from the main file.
 
-![image](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/e757d939-94be-4094-b675-a50b16329c2c)
+![Screenshot GUI](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/6cc8b3c2-a6d4-45f2-955f-38e5803046ba)
 
 Examples
 --------
-![Color](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/fab8f908-f980-4b1c-8f4e-258eeed843eb)
+![TMJT1](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/471c723b-12b5-4cac-a870-65770a4c4aad)
+![BW](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/074324a2-d7aa-4c85-8674-d7ac2240276a)
 
-![Printable Black and White](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/03a1bb77-b6f6-401f-ac54-e2c6db6b3559)
 
 FAQ
 ---------
