@@ -1,3 +1,9 @@
+![GitHub](https://img.shields.io/github/license/andriyyatsykiv/TacMapGen)
+![GitHub top language](https://img.shields.io/github/languages/top/andriyyatsykiv/TacMapGen?style=plastic)
+[![LoC](https://tokei.rs/b1/github/andriyyatsykiv/TacMapGen)](https://github.com/andriyyatsykiv/TacMapGen).
+![GitHub last commit](https://img.shields.io/github/last-commit/andriyyatsykiv/TacMapGen?color=red&style=plastic)
+[![Trello](https://img.shields.io/badge/Trello-TacMapGen-blue.svg)]([https://trello.com/b/KZuNuFjS/tacmapgen])
+
 # TacMapGen
 Easy Tactical Map Generation for outdoor competitive sports, with a specific focus on Airsoft and Paintball.
 
