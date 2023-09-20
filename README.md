@@ -7,11 +7,35 @@
 # TacMapGen
 Easy Tactical Map Generation for outdoor competitive sports, with a specific focus on Airsoft and Paintball.
 
-Install
+Installation and Usage
 --------
 Download the latest distribution, and run TacMapGen.exe from the main file.
 
 ![Screenshot GUI](https://github.com/andriyyatsykiv/TacMapGen/assets/144859431/6cc8b3c2-a6d4-45f2-955f-38e5803046ba)
+
+Telling TacMapGen What To Map
+--------
+In order to tell TacMApGen which area you want mapped, you must identify 2 coordinates that form
+opposite corners of a rectangle that highlights your area of interest
+
+(IMAGE WIP)
+
+In order to obtain these coordinates, you can go to (OSM source / Google Earth Source WIP) and obtain the
+coordinates in decimal latitude longitude form. Once you have obtained these, input the respective
+coordinate in each of the 4 text boxes.
+
+
+Mapping Points of Interest
+--------
+TacMapGen can map points of interest located in OpenStreetMaps and those added manually (WIP). In order for the program
+to automatically recognize and import points from OpenStreetMaps, they MUST be of the type "Node" and must have a "name"
+tag associated with them. TacMapGen will search _only_ for nodes that have a name tag within your area of interest and render
+them on the map. 
+ 
+Creating and Saving the Map
+--------
+You MUST select a "Map Destination" prior to clicking "Generate", that way TacMapGen knows where to put your map image.
+
 
 Examples
 --------
