@@ -47,7 +47,7 @@ coordinates_column = [
 appearance_column = [
     [sg.Text('APPEARANCE')],
 
-    [sg.Text('Do you want a colored or printer-friendly black and white map?\n(0 for COLOR, 1 for BW)'),
+    [sg.Text('Do you want a colored or printer-friendly black and white map?'),
      sg.Combo(['COLOR', 'BLACK/WHITE'], default_value=colorindex, s=(15, 22), readonly=True, key='colorindex')],
 
     [sg.Text('How many grids do you want to the map to be divided into?'),
