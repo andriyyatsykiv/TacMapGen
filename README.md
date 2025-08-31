@@ -29,7 +29,7 @@ Mapping Points of Interest
 --------
 TacMapGen can map points of interest located in OpenStreetMaps and those added manually (WIP). In order for the program
 to automatically recognize and import points from OpenStreetMaps, they MUST be of the type "Node" and must have a "name"
-tag associated with them. TacMapGen will search _only_ for nodes that have a name tag within your area of interest and render
+tag associated with them. You can easily add them using the built-in editor on the OpenStreetMaps website. TacMapGen will search _only_ for nodes that have a name tag within your area of interest and render
 them on the map. 
  
 Creating and Saving the Map
